@@ -37,6 +37,7 @@ const ContactForm: React.FC = () => {
         body: formDataToSend,
       });
 
+      
       // Log the raw response for debugging
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
