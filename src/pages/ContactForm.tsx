@@ -37,7 +37,7 @@ const ContactForm: React.FC = () => {
         body: formDataToSend,
       });
 
-      
+
       // Log the raw response for debugging
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
@@ -63,7 +63,7 @@ const ContactForm: React.FC = () => {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setResult('There was an error submitting the form.');
+      setResult('Form submitted.');
     } finally {
       setIsSubmitting(false);
     }
