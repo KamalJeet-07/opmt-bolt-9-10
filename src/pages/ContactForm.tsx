@@ -37,16 +37,23 @@ const ContactForm: React.FC = () => {
         body: formDataToSend,
       });
 
+      // Log the raw response for debugging
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
       // Check if the response is JSON or not
       const contentType = response.headers.get('content-type');
       let data;
 
       if (contentType && contentType.includes('application/json')) {
         data = await response.json(); // If response is JSON, parse it
+        console.log('Response JSON:', data); // Log the parsed JSON
       } else {
         data = await response.text(); // If response is text, get the raw response
+        console.log('Response Text:', data); // Log the raw text response
       }
 
+      // Check if the response contains a success field
       if (data.success) {
         setResult('Form Submitted Successfully');
         e.currentTarget.reset(); // Reset the form after successful submission
