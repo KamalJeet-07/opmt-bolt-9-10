@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <NavLink to="/universities">Universities</NavLink>
           <NavLink to="/testimonials">Testimonials</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/admin">Admin</NavLink>
+
         </nav>
         <button className="md:hidden" onClick={toggleMenu}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
             <NavLink to="/universities" onClick={toggleMenu}>Universities</NavLink>
             <NavLink to="/testimonials" onClick={toggleMenu}>Testimonials</NavLink>
             <NavLink to="/contact" onClick={toggleMenu}>Contact</NavLink>
-            <NavLink to="/admin" onClick={toggleMenu}>Admin</NavLink>
+
           </nav>
         </div>
       )}
