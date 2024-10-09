@@ -11,6 +11,7 @@ const ContactForm: React.FC = () => {
 
   const [result, setResult] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   // Handle input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -36,13 +37,21 @@ const ContactForm: React.FC = () => {
         body: formDataToSend,
       });
 
-      const data = await response.json();
+      // Check if the response is JSON or not
+      const contentType = response.headers.get('content-type');
+      let data;
+
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json(); // If response is JSON, parse it
+      } else {
+        data = await response.text(); // If response is text, get the raw response
+      }
 
       if (data.success) {
         setResult('Form Submitted Successfully');
         e.currentTarget.reset(); // Reset the form after successful submission
       } else {
-        setResult(data.message);
+        setResult(data.message || 'There was an issue with submission.');
       }
     } catch (error) {
       console.error('Form submission error:', error);
