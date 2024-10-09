@@ -11,8 +11,6 @@ const ContactForm: React.FC = () => {
 
   const [result, setResult] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [useApi, setUseApi] = useState<boolean>(false); // Toggle between Netlify and Web3Forms API submission
-
   // Handle input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -25,39 +23,32 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (useApi) {
-      // Web3Forms API Submission
-      setIsSubmitting(true);
-      setResult('Sending....');
+    // Web3Forms API Submission
+    setIsSubmitting(true);
+    setResult('Sending....');
 
-      const formDataToSend = new FormData(e.currentTarget);
-      formDataToSend.append('access_key', 'b8c1f63a-6f20-4b89-b960-38a7689492fb');
+    const formDataToSend = new FormData(e.currentTarget);
+    formDataToSend.append('access_key', 'b8c1f63a-6f20-4b89-b960-38a7689492fb'); // Use your Web3Forms access key
 
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formDataToSend,
-        });
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend,
+      });
 
-        const data = await response.json();
+      const data = await response.json();
 
-        if (data.success) {
-          setResult('Form Submitted Successfully');
-          e.currentTarget.reset();
-        } else {
-          setResult(data.message);
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        setResult('There was an error submitting the form.');
-      } finally {
-        setIsSubmitting(false);
+      if (data.success) {
+        setResult('Form Submitted Successfully');
+        e.currentTarget.reset(); // Reset the form after successful submission
+      } else {
+        setResult(data.message);
       }
-    } else {
-      // Netlify Submission
-      console.log('Form submitted via Netlify:', formData);
-      alert('Thank you for your message. We will get back to you soon!');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setResult('There was an error submitting the form.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -66,8 +57,7 @@ const ContactForm: React.FC = () => {
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="contact" />
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
@@ -123,7 +113,7 @@ const ContactForm: React.FC = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -132,16 +122,6 @@ const ContactForm: React.FC = () => {
                 <Send size={20} className="mr-2" />
                 {isSubmitting ? 'Submitting...' : 'Send Message'}
               </button>
-              <div className="flex items-center">
-                <label htmlFor="apiToggle" className="mr-2">Use API</label>
-                <input
-                  type="checkbox"
-                  id="apiToggle"
-                  checked={useApi}
-                  onChange={(e) => setUseApi(e.target.checked)}
-                  className="form-checkbox"
-                />
-              </div>
             </div>
           </form>
           <span>{result}</span>
