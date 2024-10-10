@@ -33,7 +33,6 @@ const Footer: React.FC = () => {
               <a href="#" className="hover:text-primary"><Facebook /></a>
               <a href="#" className="hover:text-primary"><Twitter /></a>
               <a href="https://www.instagram.com/settlingabroad_" className="hover:text-primary"><Instagram /></a>
-              <a href="#" className="hover:text-primary"><Linkedin /></a>
             </div>
           </div>
         </div>
