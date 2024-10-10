@@ -157,9 +157,9 @@ const BlogPostForm: React.FC = () => {
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">Select a category</option>
-          <option value="travel">Travel</option>
-          <option value="visa">Visa</option>
-          <option value="study-abroad">Study Abroad</option>
+          <option value="travel">Travel Visa</option>
+          <option value="visa">Work Visa</option>
+          <option value="study-abroad">Study Visa</option>
           <option value="immigration">Immigration</option>
         </select>
       </div>
