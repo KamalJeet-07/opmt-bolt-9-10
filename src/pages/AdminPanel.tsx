@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Newspaper, GraduationCap, Users, Briefcase } from 'lucide-react'
 
-type AdminSection = 'blog' | 'universities' | 'testimonials' | 'services'
+type AdminSection = 'blog' | '' | '' | ''
 
 interface BlogPost {
   id: number;
@@ -21,12 +21,6 @@ const AdminPanel: React.FC = () => {
     switch (activeSection) {
       case 'blog':
         return <BlogPostForm />
-      case 'universities':
-        return <UniversityForm />
-      case 'testimonials':
-        return <TestimonialForm />
-      case 'services':
-        return <ServiceForm />
       default:
         return null
     }
@@ -37,9 +31,6 @@ const AdminPanel: React.FC = () => {
       <h1 className="text-3xl font-bold mb-8 text-center">Admin Panel</h1>
       <div className="flex flex-wrap justify-center mb-8">
         <AdminButton icon={<Newspaper />} label="Blog Posts" onClick={() => setActiveSection('blog')} active={activeSection === 'blog'} />
-        <AdminButton icon={<GraduationCap />} label="Universities" onClick={() => setActiveSection('universities')} active={activeSection === 'universities'} />
-        <AdminButton icon={<Users />} label="Testimonials" onClick={() => setActiveSection('testimonials')} active={activeSection === 'testimonials'} />
-        <AdminButton icon={<Briefcase />} label="Services" onClick={() => setActiveSection('services')} active={activeSection === 'services'} />
       </div>
       {renderSection()}
     </div>
