@@ -157,10 +157,10 @@ const BlogPostForm: React.FC = () => {
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">Select a category</option>
-          <option value="travel">Travel Visa</option>
-          <option value="visa">Work Visa</option>
-          <option value="study-abroad">Study Visa</option>
-          <option value="immigration">Immigration</option>
+          <option value="Travel Visa">Travel Visa</option>
+          <option value="Work Visa">Work Visa</option>
+          <option value="Study Visa">Study Visa</option>
+          <option value="Immigration">Immigration</option>
         </select>
       </div>
       <div className="mb-4">
