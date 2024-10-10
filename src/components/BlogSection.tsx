@@ -31,9 +31,9 @@ const BlogSection: React.FC = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Latest Blog Posts</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">Latest Posts</h2>
         {blogPosts.length === 0 ? (
-          <p className="text-center text-gray-600">No blog posts available.</p>
+          <p className="text-center text-gray-600">No posts available.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.slice(0, 9).map(post => (
