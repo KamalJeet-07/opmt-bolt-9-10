@@ -11,7 +11,6 @@ const Header: React.FC = () => {
     <header className="bg-secondary text-white shadow-lg">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <Plane size={32} className="text-primary" />
           <span className="text-2xl font-bold">Settling Abroad</span>
         </Link>
         <nav className="hidden md:flex space-x-6">
