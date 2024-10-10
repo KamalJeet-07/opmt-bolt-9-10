@@ -7,6 +7,7 @@ const ContactForm: React.FC = () => {
     email: '',
     subject: '',
     message: '',
+    mobile: '', // Added mobile number field
   });
 
   const [result, setResult] = useState<string>('');
@@ -37,33 +38,29 @@ const ContactForm: React.FC = () => {
         body: formDataToSend,
       });
 
-
-      // Log the raw response for debugging
       console.log('Response status:', response.status);
       console.log('Response headers:', response.headers);
 
-      // Check if the response is JSON or not
       const contentType = response.headers.get('content-type');
       let data;
 
       if (contentType && contentType.includes('application/json')) {
-        data = await response.json(); // If response is JSON, parse it
-        console.log('Response JSON:', data); // Log the parsed JSON
+        data = await response.json();
+        console.log('Response JSON:', data);
       } else {
-        data = await response.text(); // If response is text, get the raw response
-        console.log('Response Text:', data); // Log the raw text response
+        data = await response.text();
+        console.log('Response Text:', data);
       }
 
-      // Check if the response contains a success field
       if (data.success) {
         setResult('Form Submitted Successfully');
-        e.currentTarget.reset(); // Reset the form after successful submission
+        e.currentTarget.reset();
       } else {
         setResult(data.message || 'There was an issue with submission.');
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setResult('Form submitted.');
+      setResult('Form Submitted');
     } finally {
       setIsSubmitting(false);
     }
@@ -101,6 +98,22 @@ const ContactForm: React.FC = () => {
                 />
               </div>
             </div>
+
+            {/* New Mobile Number Field */}
+            <div>
+              <label htmlFor="mobile" className="block text-gray-700 font-bold mb-2">Mobile Number</label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
+                placeholder="Enter your mobile number"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
             <div>
               <label htmlFor="subject" className="block text-gray-700 font-bold mb-2">Subject</label>
               <select
@@ -118,6 +131,7 @@ const ContactForm: React.FC = () => {
                 <option value="Other">Other</option>
               </select>
             </div>
+
             <div>
               <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
               <textarea
@@ -130,6 +144,7 @@ const ContactForm: React.FC = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
             </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -141,7 +156,9 @@ const ContactForm: React.FC = () => {
               </button>
             </div>
           </form>
-          <span>{result}</span>
+          <span className={result.includes('Successfully') ? 'text-green-500' : 'text-red-500'}>
+            {result}
+          </span>
         </div>
       </div>
     </div>
