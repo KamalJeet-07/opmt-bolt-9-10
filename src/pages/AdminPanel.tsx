@@ -185,16 +185,4 @@ const BlogPostForm: React.FC = () => {
   )
 }
 
-const UniversityForm: React.FC = () => {
-  return <div>University Form (To be implemented)</div>
-}
-
-const TestimonialForm: React.FC = () => {
-  return <div>Testimonial Form (To be implemented)</div>
-}
-
-const ServiceForm: React.FC = () => {
-  return <div>Service Form (To be implemented)</div>
-}
-
 export default AdminPanel
