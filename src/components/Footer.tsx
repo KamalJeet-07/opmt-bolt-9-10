@@ -21,8 +21,8 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-            <p className="text-gray-300">Phone: +44 7440 101043</p>
-            <p className="text-gray-300">Email: settlingabroad68@gmail.com</p>
+            <p><a href="tel:+447440101043" className="hover:text-primary">Phone: +44 7440 101043</a></p>
+            <p><a href="mailto:settlingabroad68@gmail.com" className="hover:text-primary">Email: Settlingabroad68@gmail.com</a></p>
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
