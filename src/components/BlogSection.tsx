@@ -53,9 +53,9 @@ const BlogSection: React.FC = () => {
           </div>
         )}
         <div className="text-center mt-12">
-          <a href="#" className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300">
+         
  
-          </a>
+          
         </div>
       </div>
     </section>
