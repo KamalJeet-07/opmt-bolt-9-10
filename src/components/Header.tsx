@@ -17,8 +17,6 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex space-x-6">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/services">Services</NavLink>
-          <NavLink to="/universities">Universities</NavLink>
-          <NavLink to="/testimonials">Testimonials</NavLink>
           <NavLink to="/contact">Contact</NavLink>
 
         </nav>
@@ -31,8 +29,6 @@ const Header: React.FC = () => {
           <nav className="flex flex-col items-center py-4 space-y-4">
             <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
             <NavLink to="/services" onClick={toggleMenu}>Services</NavLink>
-            <NavLink to="/universities" onClick={toggleMenu}>Universities</NavLink>
-            <NavLink to="/testimonials" onClick={toggleMenu}>Testimonials</NavLink>
             <NavLink to="/contact" onClick={toggleMenu}>Contact</NavLink>
 
           </nav>
