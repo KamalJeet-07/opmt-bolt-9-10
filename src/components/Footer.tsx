@@ -23,10 +23,9 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-            <p className="text-gray-300">123 Travel Street</p>
             <p className="text-gray-300">Cityville, State 12345</p>
             <p className="text-gray-300">Phone: (123) 456-7890</p>
-            <p className="text-gray-300">Email: info@settlingabroad.com</p>
+            <p className="text-gray-300">Email: settlingabroad68@gmail.com</p>
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
