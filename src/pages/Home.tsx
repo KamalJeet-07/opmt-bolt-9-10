@@ -94,9 +94,15 @@ const Home: React.FC = () => {
           <h2 className="text-3xl font-bold mb-12 text-center">Top Universities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'Harvard University', country: 'USA', image: 'https://images.unsplash.com/photo-1605806616949-1fe88c123529?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80' },
-              { name: 'University of Oxford', country: 'UK', image: 'https://images.unsplash.com/photo-1580386179684-4e3f8b5b8b9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80' },
-              { name: 'Massachusetts Institute of Technology', country: 'USA', image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80' },
+              { name: 'University of Bath', country: 'UK', image: './unofbath.png' },
+              { name: 'University of Birmingham', country: 'UK', image: './unofbgm.png' },
+              { name: 'University of Exeter', country: 'USA', image: './unofexc.png' },
+              { name: 'University of Manchester', country: 'USA', image: './unofmen.png' },
+              { name: 'University of Sheffield', country: 'USA', image: './unofshh.png' },
+              { name: 'University of St Andrews', country: 'USA', image: './unofst.png' },
+              { name: 'University of York', country: 'USA', image: './unofyk.png' },
+              { name: 'Loughborough University', country: 'USA', image: './lbun.png' },
+
             ].map((uni, index) => (
               <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                 <img src={uni.image} alt={uni.name} className="w-full h-48 object-cover" />
@@ -108,10 +114,6 @@ const Home: React.FC = () => {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link to="/universities" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
-              View All Universities
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
           </div>
         </div>
       </section>

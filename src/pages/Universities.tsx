@@ -2,9 +2,9 @@ import React from 'react'
 import { Search } from 'lucide-react'
 
 const universities = [
-  { name: 'Harvard University', country: 'USA', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBCnMBlnwhzCNn38xNMTsz8-I_iley82-QSA&s' },
-  { name: 'University of Oxford', country: 'UK', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_hRUOnfnGnnOgvGIsBZdTNekltACQtBW5Ow&s' },
-  { name: 'Massachusetts Institute of Technology', country: 'USA', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6tlprivVj8F7njk2W5hXQcsNDuu7kCxNRQw&s' },
+  { name: 'Harvard University', country: 'USA', image: './unofbath.png' },
+  { name: 'University of Oxford', country: 'UK', image: './unofbgm.png' },
+  { name: 'Massachusetts Institute of Technology', country: 'USA', image: '' },
   { name: 'Stanford University', country: 'USA', image: 'https://banner2.cleanpng.com/20180816/af/ffab1388d96363a735719e4a2ede0868.webp' },
   { name: 'University of Cambridge', country: 'UK', image: 'https://images.unsplash.com/photo-1580386179684-4e3f8b5b8b9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80' },
   { name: 'ETH Zurich', country: 'Switzerland', image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80' },
