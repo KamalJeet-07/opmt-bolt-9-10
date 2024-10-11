@@ -125,7 +125,7 @@ const BlogPostForm: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Create Blog Post</h2>
 
         <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title   Shown</label>
+          <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title , Shown</label>
           <input
             type="text"
             id="title"
@@ -138,7 +138,7 @@ const BlogPostForm: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="image" className="block text-gray-700 font-bold mb-2">Image URL   Shown</label>
+          <label htmlFor="image" className="block text-gray-700 font-bold mb-2">Image URL , Shown</label>
           <input
             type="url"
             id="image"
@@ -164,7 +164,7 @@ const BlogPostForm: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="date" className="block text-gray-700 font-bold mb-2">Date   Shown</label>
+          <label htmlFor="date" className="block text-gray-700 font-bold mb-2">Date , Shown</label>
           <input
             type="date"
             id="date"
@@ -195,7 +195,7 @@ const BlogPostForm: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="excerpt" className="block text-gray-700 font-bold mb-2">Excerpt   Shown</label>
+          <label htmlFor="excerpt" className="block text-gray-700 font-bold mb-2">Excerpt , Shown</label>
           <textarea
             id="excerpt"
             name="excerpt"
