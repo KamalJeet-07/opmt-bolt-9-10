@@ -94,14 +94,14 @@ const Home: React.FC = () => {
           <h2 className="text-3xl font-bold mb-12 text-center">Top Universities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'University of Bath', image: './unofbath.png' },
-              { name: 'University of Birmingham', image: './unofbgm.png' },
-              { name: 'University of Exeter',  image: './unofexc.png' },
-              { name: 'University of Manchester',  image: './unofmen.png' },
-              { name: 'University of Sheffield',  image: './unofshh.png' },
-              { name: 'University of St Andrews', image: './unofst.png' },
-              { name: 'University of York',  image: './unofyk.png' },
-              { name: 'Loughborough University',  image: './lbun.png' },
+              { name: 'University of Bath', image: 'https://mysampketest.netlify.app/unofbath.png' },
+              { name: 'University of Birmingham', image: 'https://mysampketest.netlify.app/unofbgm.png' },
+              { name: 'University of Exeter',  image: 'https://mysampketest.netlify.app/unofexc.png' },
+              { name: 'University of Manchester',  image: 'https://mysampketest.netlify.app/unofmen.png' },
+              { name: 'University of Sheffield',  image: 'https://mysampketest.netlify.app/unofshh.png' },
+              { name: 'University of St Andrews', image: 'https://mysampketest.netlify.app/unofst.png' },
+              { name: 'University of York',  image: 'https://mysampketest.netlify.app/unofyk.png' },
+              { name: 'Loughborough University',  image: 'https://mysampketest.netlify.app/lbun.png' },
 
             ].map((uni, index) => (
               <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105">
