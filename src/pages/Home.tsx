@@ -94,21 +94,20 @@ const Home: React.FC = () => {
           <h2 className="text-3xl font-bold mb-12 text-center">Top Universities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'University of Bath', country: 'UK', image: './unofbath.png' },
-              { name: 'University of Birmingham', country: 'UK', image: './unofbgm.png' },
-              { name: 'University of Exeter', country: 'USA', image: './unofexc.png' },
-              { name: 'University of Manchester', country: 'USA', image: './unofmen.png' },
-              { name: 'University of Sheffield', country: 'USA', image: './unofshh.png' },
-              { name: 'University of St Andrews', country: 'USA', image: './unofst.png' },
-              { name: 'University of York', country: 'USA', image: './unofyk.png' },
-              { name: 'Loughborough University', country: 'USA', image: './lbun.png' },
+              { name: 'University of Bath', image: './unofbath.png' },
+              { name: 'University of Birmingham', image: './unofbgm.png' },
+              { name: 'University of Exeter',  image: './unofexc.png' },
+              { name: 'University of Manchester',  image: './unofmen.png' },
+              { name: 'University of Sheffield',  image: './unofshh.png' },
+              { name: 'University of St Andrews', image: './unofst.png' },
+              { name: 'University of York',  image: './unofyk.png' },
+              { name: 'Loughborough University',  image: './lbun.png' },
 
             ].map((uni, index) => (
               <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                 <img src={uni.image} alt={uni.name} className="w-full h-48 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{uni.name}</h3>
-                  <p className="text-gray-600">{uni.country}</p>
                 </div>
               </div>
             ))}
