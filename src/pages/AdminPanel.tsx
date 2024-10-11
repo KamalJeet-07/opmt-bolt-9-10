@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Newspaper } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
+import { Newspaper } from 'lucide-react';
 
 interface BlogPost {
   id: number;
@@ -21,8 +22,8 @@ const AdminPanel: React.FC = () => {
       </div>
       <BlogPostForm />
     </div>
-  )
-}
+  );
+};
 
 const AdminButton: React.FC<{ icon: React.ReactNode; label: string; active: boolean }> = ({ icon, label, active }) => (
   <button
@@ -31,63 +32,98 @@ const AdminButton: React.FC<{ icon: React.ReactNode; label: string; active: bool
     {icon}
     <span className="ml-2">{label}</span>
   </button>
-)
+);
 
 const BlogPostForm: React.FC = () => {
-  const [blogPost, setBlogPost] = useState<BlogPost>({ 
+  const [blogPost, setBlogPost] = useState<BlogPost>({
     id: Date.now(),
-    title: '', 
-    content: '', 
-    image: '', 
-    author: '', 
-    date: '', 
+    title: '',
+    content: '',
+    image: '',
+    author: '',
+    date: '',
     category: '',
-    excerpt: ''
-  })
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+    excerpt: '',
+  });
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
+  // Load blog posts from Supabase
   useEffect(() => {
-    // Load blog posts from localStorage when the component mounts
-    const storedPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]')
-    setBlogPosts(storedPosts)
-  }, [])
+    const fetchBlogPosts = async () => {
+      const { data, error } = await supabase.from('blog_posts').select('*');
+  
+      if (error) {
+        console.error('Error fetching blog posts:', error);
+        alert('Failed to fetch blog posts. Check Supabase logs.');
+      } else {
+        console.log('Fetched blog posts:', data);
+  
+        if (data && data.length > 0) {
+          setBlogPosts(data); 
+          console.log('Blog posts set successfully:', data);
+        } else {
+          console.log('No blog posts found in Supabase.');
+          setBlogPosts([]); // Empty array if no data
+        }
+      }
+    };
+    fetchBlogPosts();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setBlogPost(prevState => ({ ...prevState, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setBlogPost(prevState => ({ ...prevState, [name]: value }));
+  };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const newBlogPost = { ...blogPost, id: Date.now() }
-    const updatedPosts = [newBlogPost, ...blogPosts]
-    setBlogPosts(updatedPosts)
-    localStorage.setItem('blogPosts', JSON.stringify(updatedPosts))
-    alert('Blog post created successfully!')
-    setBlogPost({ 
-      id: Date.now(),
-      title: '', 
-      content: '', 
-      image: '', 
-      author: '', 
-      date: '', 
-      category: '',
-      excerpt: ''
-    })
-  }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  const handleDelete = (id: number) => {
-    const updatedPosts = blogPosts.filter(post => post.id !== id)
-    setBlogPosts(updatedPosts)
-    localStorage.setItem('blogPosts', JSON.stringify(updatedPosts))
-    alert('Blog post deleted successfully!')
-  }
+    // Insert new blog post into Supabase
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .insert([{ ...blogPost, id: Date.now() }])
+      .select();
+
+    if (error) {
+      console.error('Error creating blog post:', error);
+      alert('Failed to create blog post!');
+    } else {
+      console.log('Inserted blog post:', data);
+      setBlogPosts([...blogPosts, ...(data || [])]); // Append new post to state
+      alert('Blog post created successfully!');
+      setBlogPost({
+        id: Date.now(),
+        title: '',
+        content: '',
+        image: '',
+        author: '',
+        date: '',
+        category: '',
+        excerpt: '',
+      });
+    }
+  };
+
+  const handleDelete = async (id: number) => {
+    const { error } = await supabase
+      .from('blog_posts')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting blog post:', error);
+      alert('Failed to delete blog post!');
+    } else {
+      setBlogPosts(blogPosts.filter(post => post.id !== id));
+      alert('Blog post deleted successfully!');
+    }
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-8">
         <h2 className="text-2xl font-bold mb-4">Create Blog Post</h2>
-        
+
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 font-bold mb-2">Title</label>
           <input
@@ -212,7 +248,7 @@ const BlogPostForm: React.FC = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminPanel
+export default AdminPanel;
