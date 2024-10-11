@@ -21,9 +21,11 @@ const Services: React.FC = () => {
               <div className="text-blue-600 mb-4">{service.icon}</div>
               <h2 className="text-2xl font-semibold mb-4">{service.title}</h2>
               <p className="text-gray-600">{service.description}</p>
-              <button className="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
-                Learn More
-              </button>
+              <button 
+  onClick={() => window.location.href='/contact'} 
+  className="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">
+    Learn More
+</button>
             </div>
           ))}
         </div>
