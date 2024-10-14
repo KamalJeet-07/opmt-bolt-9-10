@@ -8,6 +8,7 @@ import ContactForm from './pages/ContactForm'
 import AdminPanel from './pages/AdminPanel'
 import Services from './pages/Services'
 import Testimonials from './pages/Testimonials'
+import Login from './pages/Login'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/mysettle2511" element={<AdminPanel />} />
             <Route path="/services" element={<Services />} />
             <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
         <Footer />
