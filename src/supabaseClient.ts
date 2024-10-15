@@ -6,6 +6,10 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export const isAuthenticated = async () => {
-    const { data: session } = await supabase.auth.getSession();
-    return session;
-  };
+  const { data: { session }, error } = await supabase.auth.getSession();
+  if (error) {
+    console.error("Error fetching session:", error);
+    return null;
+  }
+  return session; // Return session if user is logged in, else null
+};

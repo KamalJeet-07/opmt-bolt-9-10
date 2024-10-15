@@ -24,8 +24,8 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/login" element={<Login />} />
-
-            {/* Protected AdminPanel route */}
+            
+            {/* Wrap AdminPanel with ProtectedRoute */}
             <Route 
               path="/AdminPanel" 
               element={
