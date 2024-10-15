@@ -102,6 +102,7 @@ const Home: React.FC = () => {
               { name: 'University of St Andrews', image: 'https://mysampketest.netlify.app/unofst.png' },
               { name: 'University of York',  image: 'https://mysampketest.netlify.app/unofyk.png' },
               { name: 'Loughborough University',  image: 'https://mysampketest.netlify.app/lbun.png' },
+              { name: 'Johns Hopkins University',  image: 'https://mysampketest.netlify.app/jhun.png' },
 
             ].map((uni, index) => (
               <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105">
