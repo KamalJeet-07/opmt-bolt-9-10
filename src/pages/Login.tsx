@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import { supabase } from '../supabaseClient';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
+  const navigate = useNavigate(); // Use React Router's navigate
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
+    setLoading(false); // Stop loading
 
     if (error) {
-      setError('Login failed. Please check your credentials.');
+      setError(error.message || 'Login failed. Please check your credentials.');
     } else {
-      window.location.href = '/AdminPanel'; // Redirect to the admin panel
+      navigate('/AdminPanel'); // Use navigate to redirect
     }
   };
 
@@ -24,6 +29,7 @@ const Login: React.FC = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Login</h1>
       {error && <p className="text-red-500">{error}</p>}
+      {loading && <p className="text-blue-500">Logging in...</p>}
       <form onSubmit={handleLogin} className="max-w-md mx-auto">
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
@@ -49,7 +55,9 @@ const Login: React.FC = () => {
           />
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Login</button>
+        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );
