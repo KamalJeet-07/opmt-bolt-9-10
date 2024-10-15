@@ -21,7 +21,10 @@ const BlogSection: React.FC = () => {
   // Fetch from Supabase and save to localStorage
   useEffect(() => {
     const fetchBlogPostsFromSupabase = async () => {
-      const { data, error } = await supabase.from('blog_posts').select('*');
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('date', { ascending: false }); // Sorting by date in descending order
       if (error) {
         console.error('Error fetching blog posts:', error);
       } else if (data) {
