@@ -1,14 +1,15 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import Universities from './pages/Universities'
-import ContactForm from './pages/ContactForm'
-import AdminPanel from './pages/AdminPanel'
-import Services from './pages/Services'
-import Testimonials from './pages/Testimonials'
-import Login from './pages/Login'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Universities from './pages/Universities';
+import ContactForm from './pages/ContactForm';
+import AdminPanel from './pages/AdminPanel';
+import Services from './pages/Services';
+import Testimonials from './pages/Testimonials';
+import Login from './pages/Login';
+import ProtectedRoute from './pages/ProtectedRoute'; // Import ProtectedRoute
 
 function App() {
   return (
@@ -20,16 +21,25 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/universities" element={<Universities />} />
             <Route path="/contact" element={<ContactForm />} />
-            <Route path="/AdminPanel" element={<AdminPanel />} />
             <Route path="/services" element={<Services />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/login" element={<Login />} />
+
+            {/* Protected AdminPanel route */}
+            <Route 
+              path="/AdminPanel" 
+              element={
+                <ProtectedRoute>
+                  <AdminPanel />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
